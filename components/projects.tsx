@@ -7,43 +7,34 @@ import { Button } from "@/components/ui/button"
 
 const projects = [
   {
-    title: "TravelEase Booking Platform",
-    description: "A comprehensive hotel and travel booking platform with real-time availability, dynamic pricing, and seamless payment integration. Features include multi-language support, loyalty programs, and admin analytics dashboard.",
-    image: "/api/placeholder/800/500",
-    technologies: ["Laravel", "Vue 3", "PostgreSQL", "Redis", "Stripe", "AWS"],
-    liveUrl: "#",
-    githubUrl: "#",
-    stats: {
-      users: "50K+",
-      bookings: "100K+",
-    },
+    title: "Portfolio Maker",
+    description: "A portfolio maker platform that allows users to create and customize their portfolios with ease. Features include wide range of templates, and seamless integration with social media platforms.",
+    image: null,
+    technologies: ["Next.js", "React", "Tailwind CSS", "Vercel"],
+    liveUrl: null,
+    githubUrl: null,
     featured: true,
+    production: false,
   },
   {
-    title: "Malaysia Calendar Web App",
-    description: "An interactive calendar application featuring Malaysian public holidays, Islamic calendar integration, and custom event management. Includes recurring events, reminders, and shared calendars for teams.",
-    image: "/api/placeholder/800/500",
-    technologies: ["Vue 3", "Nuxt", "PostgreSQL", "Tailwind CSS", "PWA"],
-    liveUrl: "#",
-    githubUrl: "#",
-    stats: {
-      users: "25K+",
-      events: "500K+",
-    },
+    title: "Interactive Calendar Website (Calendar2U Gallery)",
+    description: "A comprehensive calendar website with public holiday, festival, and long weekend information. This project are belongs to Yuno Solutions Sdn Bhd.",
+    image: "/calendar2u-gallery.png",
+    technologies: ["Laravel", "Vue 3", "MySQL", "Tailwind CSS", "Redis"],
+    liveUrl: "https://calendar2u.com/gallery/malaysia",
+    githubUrl: null,
     featured: true,
+    production: true,
   },
   {
-    title: "Commodity Pricing Dashboard",
-    description: "Real-time commodity pricing dashboard with live market data, historical trends, price alerts, and predictive analytics. Features interactive charts, portfolio tracking, and customizable watchlists.",
-    image: "/api/placeholder/800/500",
-    technologies: ["Laravel", "Vue 3", "PostgreSQL", "WebSockets", "Chart.js", "Docker"],
-    liveUrl: "#",
-    githubUrl: "#",
-    stats: {
-      dataPoints: "1M+",
-      uptime: "99.9%",
-    },
+    title: "Date Calculator",
+    description: "A date calculator that allows users to calculate the difference between two dates. Features include date calculation, date difference, and more. This project are belongs to Yuno Solutions Sdn Bhd.",
+    image: "/date-calculator.png",
+    technologies: ["Laravel", "Vue 3", "MySQL", "Tailwind CSS"],
+    liveUrl: "https://date-calculator.app/calculate/duration-between-date",
+    githubUrl: null,
     featured: true,
+    production: true,
   },
 ]
 
@@ -83,9 +74,8 @@ export function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`flex flex-col ${
-                  index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                } gap-8 lg:gap-12 items-center`}
+                className={`flex flex-col ${index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+                  } gap-8 lg:gap-12 items-center`}
               >
                 {/* Project Image */}
                 <div className="flex-1 w-full">
@@ -96,30 +86,44 @@ export function Projects() {
                   >
                     {/* Placeholder gradient */}
                     <div className="aspect-video bg-gradient-to-br from-primary/20 via-card to-chart-2/20 flex items-center justify-center">
-                      <div className="text-center p-8">
-                        <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-primary/10 flex items-center justify-center">
-                          <Globe className="h-8 w-8 text-primary" />
-                        </div>
-                        <h3 className="font-semibold text-foreground">{project.title}</h3>
-                        <p className="text-sm text-muted-foreground mt-2">Preview coming soon</p>
-                      </div>
+                      {project.image ?
+                        (<img
+                          src={project.image}
+                          alt={project.title}
+                          width={800}
+                          height={600}
+                          className="w-full h-auto object-cover"
+                        />
+                        ) :
+                        (<div className="text-center p-8">
+                          <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-primary/10 flex items-center justify-center">
+                            <Globe className="h-8 w-8 text-primary" />
+                          </div>
+                          <h3 className="font-semibold text-foreground">{project.title}</h3>
+                          <p className="text-sm text-muted-foreground mt-2">Preview coming soon</p>
+                        </div>)}
                     </div>
-                    
+
                     {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-background/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                      <Button size="sm" variant="secondary" className="rounded-full" asChild>
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="h-4 w-4 mr-2" />
-                          Live Demo
-                        </a>
-                      </Button>
-                      <Button size="sm" variant="outline" className="rounded-full" asChild>
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                          <Github className="h-4 w-4 mr-2" />
-                          Code
-                        </a>
-                      </Button>
-                    </div>
+                    {project.liveUrl && (
+                      < div className="absolute inset-0 bg-background/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4" >
+
+                        <Button size="sm" variant="secondary" className="rounded-full" asChild>
+                          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="h-4 w-4 mr-2" />
+                            Live Demo
+                          </a>
+                        </Button>
+
+                        <Button size="sm" variant="outline" className="rounded-full" asChild>
+                          {project.githubUrl && (
+                            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                              <Github className="h-4 w-4 mr-2" />
+                              Code
+                            </a>
+                          )}
+                        </Button>
+                      </div>)}
                   </motion.div>
                 </div>
 
@@ -142,7 +146,7 @@ export function Projects() {
                     </p>
 
                     {/* Stats */}
-                    <div className="flex gap-6">
+                    {/* <div className="flex gap-6">
                       {Object.entries(project.stats).map(([key, value]) => (
                         <div key={key} className="flex items-center gap-2">
                           {key === "users" && <Users className="h-4 w-4 text-primary" />}
@@ -156,7 +160,7 @@ export function Projects() {
                           </span>
                         </div>
                       ))}
-                    </div>
+                    </div> */}
 
                     {/* Technologies */}
                     <div className="flex flex-wrap gap-2">
@@ -173,25 +177,31 @@ export function Projects() {
                     {/* Actions */}
                     <div className="flex gap-4 pt-2">
                       <Button className="rounded-full" asChild>
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="h-4 w-4 mr-2" />
-                          View Project
-                        </a>
+                        {(project.liveUrl && project.production) ? (
+                          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="h-4 w-4 mr-2" />
+                            View Project
+                          </a>) : (
+                          <p className="text-sm text-muted-foreground mt-2">In Development</p>
+                        )}
                       </Button>
                       <Button variant="outline" className="rounded-full" asChild>
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                          <Github className="h-4 w-4 mr-2" />
-                          Source Code
-                        </a>
+                        {project.githubUrl &&
+                          (<a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                            <Github className="h-4 w-4 mr-2" />
+                            Source Code
+                          </a>)
+                        }
                       </Button>
                     </div>
                   </div>
                 </div>
               </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+            ))
+            }
+          </div >
+        </div >
+      </div >
+    </section >
   )
 }

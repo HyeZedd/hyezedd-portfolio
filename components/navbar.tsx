@@ -9,7 +9,7 @@ const navLinks = [
   { href: "#about", label: "About" },
   { href: "#tech", label: "Tech Stack" },
   { href: "#experience", label: "Experience" },
-  // { href: "#projects", label: "Projects" },
+  { href: "#projects", label: "Projects" },
   { href: "#services", label: "Services" },
   { href: "#contact", label: "Contact" },
 ]
@@ -22,7 +22,7 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
-      
+
       // Update active section based on scroll position
       const sections = navLinks.map(link => link.href.substring(1))
       for (const section of sections.reverse()) {
@@ -55,11 +55,10 @@ export function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-full lg:w-auto ${
-          isScrolled
+        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-full lg:w-auto ${isScrolled
             ? "bg-card/80 backdrop-blur-xl border border-border shadow-lg"
             : "bg-transparent"
-        } rounded-full px-2 py-2`}
+          } rounded-full px-2 py-2`}
       >
         <div className="flex items-center gap-1 justify-between lg:justify-center">
           {/* Logo */}
@@ -71,7 +70,7 @@ export function Navbar() {
             }}
             className="px-4 py-2 font-semibold text-foreground hover:text-primary transition-colors whitespace-nowrap"
           >
-           HAIZAD SUDIRMAN
+            HAIZAD SUDIRMAN
           </a>
 
           {/* Desktop Navigation */}
@@ -80,11 +79,10 @@ export function Navbar() {
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-full whitespace-nowrap cursor-pointer ${
-                  activeSection === link.href.substring(1)
+                className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-full whitespace-nowrap cursor-pointer ${activeSection === link.href.substring(1)
                     ? "text-primary"
                     : "text-muted-foreground hover:text-foreground"
-                }`}
+                  }`}
               >
                 {link.label}
                 {activeSection === link.href.substring(1) && (
@@ -125,11 +123,10 @@ export function Navbar() {
                 <button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className={`px-4 py-3 text-left text-sm font-medium rounded-xl transition-colors ${
-                    activeSection === link.href.substring(1)
+                  className={`px-4 py-3 text-left text-sm font-medium rounded-xl transition-colors ${activeSection === link.href.substring(1)
                       ? "bg-primary/10 text-primary"
                       : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                  }`}
+                    }`}
                 >
                   {link.label}
                 </button>
