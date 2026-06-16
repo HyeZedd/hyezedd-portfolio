@@ -2,19 +2,19 @@
 
 import { motion } from "framer-motion"
 import { AnimatedSection } from "./animations"
-import { ExternalLink, Github, Globe, Calendar, Users } from "lucide-react"
+import { ExternalLink, Github, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const projects = [
   {
     title: "Portfolio Maker",
     description: "A portfolio maker platform that allows users to create and customize their portfolios with ease. Features include wide range of templates, and seamless integration with social media platforms.",
-    image: null,
+    image: "/portfolio-maker.png",
     technologies: ["Next.js", "React", "Tailwind CSS", "Vercel"],
-    liveUrl: null,
-    githubUrl: null,
+    liveUrl: 'https://portfolio-maker.hyezedd.my/',
+    githubUrl: 'https://github.com/HyeZedd/portfolio_maker',
     featured: true,
-    production: false,
+    production: true,
   },
   {
     title: "Interactive Calendar Website (Calendar2U Gallery)",
